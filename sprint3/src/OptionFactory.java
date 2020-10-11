@@ -1,7 +1,7 @@
 public class OptionFactory {
     public Option getOption(String optionType){
         if(optionType == null){
-            return null;
+            return new noOption();
         }
 
 

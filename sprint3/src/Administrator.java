@@ -19,6 +19,7 @@ public class Administrator{
 
     }
 
+    //Needs Comments
     public void parse(String[] args) throws IOException, URISyntaxException {
 
         if(args.length == 0)
@@ -29,6 +30,8 @@ public class Administrator{
                     if(args[k].contains("-")){
                         option = optionFactory.getOption(args[k]);
                         option.process();
+                    }else if(option == null){
+                        option = optionFactory.getOption(null);
                     }
                 }
                 counter = counterFactory.getCounter((args[i]));
