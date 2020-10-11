@@ -16,9 +16,9 @@ public class Administrator{
         args = new String[]{"charcount","test.txt"};
         Administrator admin = new Administrator();
         admin.parse(args);
-
     }
 
+    //This is vily's comment
     //Needs Comments
     public void parse(String[] args) throws IOException, URISyntaxException {
 
