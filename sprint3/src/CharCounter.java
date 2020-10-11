@@ -23,7 +23,7 @@ public class CharCounter extends Counter {
     @Override
     public void process(IFilePath[] file, IOption opt) throws IOException {
         for(int i = 0; i < file.length; i++){
-            count = 0;
+                count = 0;
             if(file[i] != null){
                 file[i].canReadFile();
                 while ((file[i].getFile().read()) != EOF) {
