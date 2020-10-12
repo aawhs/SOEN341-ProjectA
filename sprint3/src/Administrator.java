@@ -58,6 +58,7 @@ public class Administrator{
                 }else{
                     counter.process(file, option);
                 }
+
             }
             return;
 
