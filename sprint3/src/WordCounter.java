@@ -3,6 +3,28 @@ import java.io.IOException;
 public class WordCounter extends Counter {
     @Override
     public void process(IFilePath[] file) throws IOException {
+    	int character; 
+    	for(int i = 0; i < file.length; i++){
+             count = 0;
+             if(file[i] != null){
+                 file[i].canReadFile();
+                 while ((character = file[i].getFile().read()) != EOF) {
+                     if(isSpace(character)) {
+                    	 if (!whiteSpace) {
+                             whiteSpace = true;
+                             ++count;
+                    	 }
+                    	 whiteSpace = false;
+                     }
+                 }
+                 System.out.println("\nWords Count: " + getCount());
+             }
+             for(int j = 0; j<i ; j++){
+                 file[j].close();
+             }
+             break;
+         }
+         return;
     }
 
     @Override
