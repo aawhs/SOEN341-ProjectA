@@ -50,13 +50,14 @@ public class Administrator{
                         file[j] = new FilePath(args[j+1]);
                         break;
                     }else{
-                        file[j] = new FilePath(args[j+1]);
+                        file[j] = new FilePath(args[j+2]);
                     }
                 }
                 if(option.getClass().getName().equalsIgnoreCase("noOption")) {
                     counter.process(file);
+                }else{
+                    counter.process(file, option);
                 }
-                counter.process(file, option);
 
             }
             return;
