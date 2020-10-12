@@ -3,7 +3,27 @@ import java.io.*;
 public class LineCounter extends Counter {
 
     @Override
-    public void process(IFilePath[] file) {
+    public void process(IFilePath[] file) throws IOException {
+        int character;
+        for (IFilePath iFilePath : file) {
+            count = 0;
+            if (iFilePath != null) {
+                iFilePath.canReadFile();
+
+                while ((character = iFilePath.getFile().read()) != EOF) {
+                    if (character == '\n') {
+                        ++count;
+                    }
+                }
+                System.out.println("\nLines: " + +getCount());
+            }
+        }
+        for (IFilePath iFilePath : file) {
+            if (iFilePath != null) {
+                iFilePath.close();
+            }
+        }
+
 
     }
 
@@ -14,6 +34,7 @@ public class LineCounter extends Counter {
             count = 0;
             if (iFilePath != null) {
                 iFilePath.canReadFile();
+
                 while ((character = iFilePath.getFile().read()) != EOF) {
                     if (character == '\n') {
                         ++count;

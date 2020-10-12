@@ -41,9 +41,9 @@ public class charcount {
             //Getting Absolute path from argument (if file exists in the same folder as class)
             Path srcPath = Paths.get(srcFilename);
             Path fileName = srcPath.getFileName();
-            URL path = ClassLoader.getSystemResource(fileName.toString());
-            path.toURI();
-            srcFile = new File(path.toURI());
+            //URL path = ClassLoader.getSystemResource(fileName.toString());
+           // path.toURI();
+            srcFile = new File(String.valueOf(srcPath));
 
             System.out.println("charcount: srcFilename = '" + srcFile.getName() + "'");
             if (!srcFile.canRead()) {
