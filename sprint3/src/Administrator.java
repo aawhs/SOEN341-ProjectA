@@ -46,16 +46,18 @@ public class Administrator{
                         file[j] = new FilePath(args[i+1]);
                         counter.process(file, args[i+2], option);
                         break;
-                    }else if(option != null){
-                        file[j] = new FilePath(args[j+2]);
+                    }else if(option.getClass().getSimpleName().equalsIgnoreCase("noOption")){
+                        file[j] = new FilePath(args[j+1]);
                         break;
+                    }else{
+                        file[j] = new FilePath(args[j+1]);
                     }
-                    file[j] = new FilePath(args[j+1]);
                 }
-                if(option != null) {
-                    counter.process(file, option);
+                if(option.getClass().getName().equalsIgnoreCase("noOption")) {
+                    counter.process(file);
                 }
-                counter.process(file);
+                counter.process(file, option);
+
             }
             return;
 
