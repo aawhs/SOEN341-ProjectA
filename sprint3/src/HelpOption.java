@@ -1,3 +1,5 @@
+import static java.lang.System.exit;
+
 public class HelpOption extends Option {
 
     public HelpOption() {
@@ -18,5 +20,6 @@ public class HelpOption extends Option {
     @Override
     public void process() {
         printUsage();
+        exit(1);
     }
 }

@@ -1,3 +1,5 @@
+import static java.lang.System.exit;
+
 public class BannerOption extends Option {
     public BannerOption() {
         super(new String[]{"-b"},"-banner");
@@ -9,6 +11,8 @@ public class BannerOption extends Option {
         System.out.println("wcOO Version 1.2\n" +
                 "Copyright (C) Concordia University 2020. All Rights Reserved.\n" +
                 "Written by Ahmed Ali\n");
+
+        exit(1);
     }
 
 }
