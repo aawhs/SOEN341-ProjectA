@@ -12,10 +12,7 @@ public class Administrator{
 
     //IFilePath[] file;
 
-    ArrayList<IFilePath> file = new ArrayList<IFilePath>();
-
-    public Administrator() throws FileNotFoundException, URISyntaxException {
-    }
+    ArrayList<IFilePath> file = new ArrayList<>();
 
     public static void main(String[] args) throws IOException, URISyntaxException {
         args = new String[]{"charcount","-v","test.txt", "testcopy.txt"};
@@ -24,6 +21,7 @@ public class Administrator{
         admin.process();
     }
 
+    //needs comments
     public void parse(String[] args) throws IOException, URISyntaxException {
 
         //Asserting Arguments
@@ -57,15 +55,13 @@ public class Administrator{
 
     public void process() throws IOException {
         //Processing All Files
-        for(int i = 0; i< file.size(); i++){
-            counter.process(file.get(i), option);
-        }
+        for (IFilePath iFilePath : file)
+            counter.process(iFilePath, option);
 
 
         //Closing All Files
-        for(int i = 0; i< file.size(); i++)
-            file.get(i).close();
-
+        for (IFilePath iFilePath : file)
+            iFilePath.close();
     }
 
     /*
