@@ -10,12 +10,10 @@ public class Administrator{
     IOption option;
     ICounter counter;
 
-    //IFilePath[] file;
-
     ArrayList<IFilePath> file = new ArrayList<>();
 
     public static void main(String[] args) throws IOException, URISyntaxException {
-        args = new String[]{"charcount","-v","test.txt", "testcopy.txt", "testing.txt"};
+        args = new String[]{"wc","test.txt"};
         Administrator admin = new Administrator();
         admin.parse(args);
         admin.process();
@@ -53,7 +51,7 @@ public class Administrator{
         }
     }
 
-    public void process() throws IOException {
+    public void process() throws IOException, URISyntaxException {
         //Processing All Files
         for (IFilePath iFilePath : file)
             counter.process(iFilePath, option);
