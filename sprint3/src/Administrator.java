@@ -15,7 +15,7 @@ public class Administrator{
     ArrayList<IFilePath> file = new ArrayList<>();
 
     public static void main(String[] args) throws IOException, URISyntaxException {
-        args = new String[]{"charcount","-v","test.txt", "testcopy.txt"};
+        args = new String[]{"charcount","-v","test.txt", "testcopy.txt", "testing.txt"};
         Administrator admin = new Administrator();
         admin.parse(args);
         admin.process();
