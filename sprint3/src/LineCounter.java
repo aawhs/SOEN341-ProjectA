@@ -17,7 +17,7 @@ public class LineCounter extends Counter {
                         }
                     }
                 }
-                System.out.println("\nLines: " + getCount() + 1);
+                System.out.println("\nLines: " + (getCount() + 1));
             }
 
 
