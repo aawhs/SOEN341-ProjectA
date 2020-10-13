@@ -7,8 +7,9 @@ public class WcCounter extends Counter{
 
 
     @Override
-    public void process(IFilePath file, IOption opt) throws IOException, URISyntaxException {
+    public void process(IFilePath file, IOption opt) {
         //Character Counter
+    	try {
         counter = counterFactory.getCounter("charcount");
         counter.process(file,opt);
         file.reset();
@@ -22,6 +23,13 @@ public class WcCounter extends Counter{
         counter = counterFactory.getCounter("linecount");
         counter.process(file,opt);
         file.reset();
+    	}
+    	catch (IOException e) {
+    		System.out.println("Error in reading files");
+    	}
+    	catch (URISyntaxException e2) {
+    		System.out.println("URI Syntax error");
+    	}
     }
 
     @Override
