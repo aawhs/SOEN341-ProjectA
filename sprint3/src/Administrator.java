@@ -1,7 +1,5 @@
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URISyntaxException;
-import java.util.Arrays;
 
 public class Administrator{
     OptionFactory optionFactory = new OptionFactory();
@@ -13,14 +11,11 @@ public class Administrator{
     IFilePath[] file = new FilePath[9];
 
     public static void main(String[] args) throws IOException, URISyntaxException {
-        args = new String[]{"charcount","test.txt"};
+        args = new String[]{"charcount","-v","test.txt"};
         Administrator admin = new Administrator();
         admin.parse(args);
     }
 
-    //This is vily's comment
-    //hi
-    //Needs Comments
     public void parse(String[] args) throws IOException, URISyntaxException {
 
         if(args.length == 0)
@@ -36,7 +31,7 @@ public class Administrator{
                     }
                 }
                 counter = counterFactory.getCounter((args[i]));
-                for(int j = 0; j< args.length-1 ; j++){
+                for(int j = 0; j< args.length ; j++){
                     if(counter.getClass().getName().equals("CopyCounter")){
                         if(option.isEnabled()){
                             file[j] = new FilePath(args[i+2]);
@@ -46,15 +41,16 @@ public class Administrator{
                         file[j] = new FilePath(args[i+1]);
                         counter.process(file, args[i+2], option);
                         break;
-                    }else if(option.getClass().getSimpleName().equalsIgnoreCase("noOption")){
+                    }else if(!option.isEnabled()){
                         file[j] = new FilePath(args[j+1]);
                         break;
                     }else{
                         file[j] = new FilePath(args[j+2]);
+                        break;
                     }
                 }
-                if(option.getClass().getName().equalsIgnoreCase("noOption")) {
-                    counter.process(file);
+                if(!option.isEnabled()) {
+                    counter.process(file, option);
                 }else{
                     counter.process(file, option);
                 }

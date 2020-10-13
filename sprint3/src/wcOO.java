@@ -4,13 +4,12 @@
 // wc.java - wordcount, linecount and charcount sourceFiles+
 
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URISyntaxException;
 
 public class wcOO {
     public static void main(String [] args) throws IOException, URISyntaxException {
-        //args = new String[]{"charcount",, "test.txt"};
+        //args = new String[]{"charcount", "test.txt"};
         Administrator admin = new Administrator();
         admin.parse(args);
     }

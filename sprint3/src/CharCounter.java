@@ -11,6 +11,7 @@ public class CharCounter extends Counter {
                     ++count;
                 }
                 System.out.println("\nCharacters Count: " + getCount());
+                System.out.println("test");
             }
             for(int j = 0; j<i ; j++){
                 file[j].close();
@@ -28,13 +29,12 @@ public class CharCounter extends Counter {
                 file[i].canReadFile();
                 while ((file[i].getFile().read()) != EOF) {
                     ++count;
-                    if(opt.isEnabled() == false){
-                        if(opt.isRequired()){
+                    if(opt.isEnabled() && opt.isRequired()){
                             System.out.print("c");
-                        }
                     }
                 }
                 System.out.println("\nCharacters Count: " + getCount());
+
             }
             for(int j = 0; j<i ; j++){
                 file[j].close();
