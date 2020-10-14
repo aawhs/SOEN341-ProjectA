@@ -14,7 +14,10 @@ public interface IFileManager {
     void close() throws IOException;
     void reset() throws IOException, URISyntaxException;
     void dstFilePath();
-    FileInputStream getFile();
+    FileInputStream getFileInStream();
     FileOutputStream getFileOutStream();
+    void setBufferedReader() throws FileNotFoundException;
+    BufferedReader getBufferedReader();
+
 }
 
