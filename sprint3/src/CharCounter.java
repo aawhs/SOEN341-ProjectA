@@ -1,25 +1,30 @@
 import java.io.IOException;
+import java.net.URISyntaxException;
+import java.util.ArrayList;
 
 public class CharCounter extends Counter {
 
     @Override
-    public void process(IFilePath file, IOption opt) throws IOException {
-                count = 0;
+    public void process(ArrayList<IFileManager> file, IOption opt) throws IOException, URISyntaxException {
+        System.out.println("\n---------- Character Counter Program ----------");
+        count = 0;
             if(file != null){
-                file.canReadFile();
-                while ((file.getFile().read()) != EOF) {
-                    ++count;
-                    if(opt.isEnabled() && opt.isRequired()){
-                            System.out.print("c");
+                for (IFileManager iFileManager : file) {
+                    iFileManager.openInputStream();
+                    iFileManager.canReadFile();
+                    if (opt.isEnabled() && opt.isRequired()) {
+                        System.out.print("Verbose : ");
                     }
+                    while ((iFileManager.getFile().read()) != EOF) {
+                        ++count;
+                        if (opt.isEnabled() && opt.isRequired()) {
+                            System.out.print("c");
+                        }
+                    }
+                    System.out.println("\nCharacters Count: " + getCount());
+                    count = 0;
                 }
-                System.out.println("\nCharacters Count: " + getCount());
 
             }
-    }
-
-    @Override
-    public void process(IFilePath file, Object dst, IOption opt) throws IOException {
-
     }
 }

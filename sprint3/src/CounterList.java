@@ -15,12 +15,7 @@ public class CounterList extends Counter{
     }
 
     @Override
-    public void process(IFilePath file, IOption dst) throws IOException, URISyntaxException {
-
-    }
-
-    @Override
-    public void process(IFilePath file, Object dst, IOption opt) throws IOException {
+    public void process(ArrayList<IFileManager> file, IOption dst) {
 
     }
 }
