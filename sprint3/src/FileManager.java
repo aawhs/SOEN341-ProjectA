@@ -26,7 +26,7 @@ public class FileManager implements IFileManager {
     public void setFilePath() {
         srcPath = Paths.get(fileName);
         filePath = srcPath.getFileName();
-        filePathSystem = ClassLoader.getSystemResource(filePath.toString());
+        filePathSystem = ClassLoader.getSystemResource(srcPath.toString());
     }
 
     public void openFile() throws URISyntaxException {

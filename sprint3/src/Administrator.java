@@ -12,7 +12,7 @@ public class Administrator {
     ArrayList<IFileManager> file = new ArrayList<>();
 
     public static void main(String[] args) throws IOException, URISyntaxException {
-        args = new String[]{"wc", "-v", "test.txt"};
+        args = new String[]{"charcount", "-v", "test.txt", "testnew.txt"};
         Administrator admin = new Administrator();
         admin.parse(args);
         admin.execute();

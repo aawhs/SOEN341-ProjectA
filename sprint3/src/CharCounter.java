@@ -21,10 +21,9 @@ public class CharCounter extends Counter {
                         System.out.print("c");
                     }
                 }
-                System.out.print("Characters Count: " + getCount());
+                System.out.println("Characters Count: " + getCount());
                 count = 0;
             }
-
         }
     }
 }

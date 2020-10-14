@@ -11,22 +11,20 @@ public class WcCounter extends Counter{
     public void count(ArrayList<IFileManager> file, IOption opt) {
         System.out.println("\n---------- WC Program ----------");
 
+
     	try {
     	    for(int i = 0; i < file.size() ; i++){
                 //Character Counter
                 counter = counterFactory.getCounter("charcount");
                 counter.count(file,opt);
-                file.get(i).reset();
 
                 //Word Counter
                 counter = counterFactory.getCounter("wordcount");
                 counter.count(file,opt);
-                file.get(i).reset();
 
                 //Line Counter
                 counter = counterFactory.getCounter("linecount");
                 counter.count(file,opt);
-                file.get(i).reset();
             }
 
     	}
