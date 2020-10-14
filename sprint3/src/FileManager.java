@@ -14,6 +14,7 @@ public class FileManager implements IFileManager {
     private File dstFile;
     private FileInputStream srcStream;
     private FileOutputStream dstStream;
+    private BufferedReader reader;
 
 
 
@@ -57,7 +58,11 @@ public class FileManager implements IFileManager {
         openInputStream();
     }
 
-    public FileInputStream getFile() {
+    public File getFile(){
+        return this.srcFile;
+    }
+
+    public FileInputStream getFileInStream() {
         return this.srcStream;
     }
 
@@ -72,6 +77,13 @@ public class FileManager implements IFileManager {
             return srcFile.getAbsolutePath();
         else
             return "No Path";
+    }
+
+    public void setBufferedReader() throws FileNotFoundException {
+        reader = new BufferedReader(new FileReader(getFile()));
+    }
+    public BufferedReader getBufferedReader(){
+      return reader;
     }
 
 
