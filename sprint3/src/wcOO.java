@@ -6,12 +6,33 @@
 
 import java.io.IOException;
 import java.net.URISyntaxException;
+import java.util.ArrayList;
 
 public class wcOO {
+
+    private static ICounter counter;
+    private static IOption option;
+    private static ArrayList<IFileManager> file;
+    private static Administrator admin;
+
     public static void main(String [] args) throws IOException, URISyntaxException {
-        //args = new String[]{"charcount", "test.txt"};
-        Administrator admin = new Administrator();
+        args = new String[]{"wc", "test.txt"};
+        admin = new Administrator();
         admin.parse(args);
-        admin.execute();
+        wcOO.execute();
+    }
+
+    public static void execute() throws IOException, URISyntaxException {
+        //Initializing Objects
+        counter = admin.getCounter();
+        option = admin.getOption();
+        file = admin.getFileList();
+
+        //Processing All Files
+        counter.count(file, option);
+
+        //Closing All Files
+        for (IFileManager iFileManager : file)
+            iFileManager.close();
     }
 }

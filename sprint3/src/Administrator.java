@@ -3,20 +3,22 @@ import java.net.URISyntaxException;
 import java.util.ArrayList;
 
 public class Administrator {
-    OptionFactory optionFactory = new OptionFactory();
-    CounterFactory counterFactory = new CounterFactory();
+    private static OptionFactory optionFactory = new OptionFactory();
+    private static CounterFactory counterFactory = new CounterFactory();
 
-    IOption option;
-    ICounter counter;
+    private static IOption option;
+    private static ICounter counter;
 
     ArrayList<IFileManager> file = new ArrayList<>();
 
+    /*
     public static void main(String[] args) throws IOException, URISyntaxException {
-        args = new String[]{"charcount", "-v", "test.txt", "testnew.txt"};
+        args = new String[]{"wc", "-v", "test.txt","testnew.txt"};
         Administrator admin = new Administrator();
         admin.parse(args);
-        admin.execute();
     }
+
+     */
 
     //needs comments
     public void parse(String[] args){
@@ -51,12 +53,17 @@ public class Administrator {
         }
     }
 
-    public void execute() throws IOException, URISyntaxException {
-        //Processing All Files
-        counter.count(file, option);
 
-        //Closing All Files
-        for (IFileManager iFileManager : file)
-            iFileManager.close();
+    public ICounter getCounter(){
+        return counter;
     }
+
+    public IOption getOption(){
+        return option;
+    }
+
+    public ArrayList<IFileManager> getFileList(){
+        return file;
+    }
+
 }
