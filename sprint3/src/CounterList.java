@@ -15,7 +15,7 @@ public class CounterList extends Counter{
     }
 
     @Override
-    public void process(ArrayList<IFileManager> file, IOption dst) {
+    public void count(ArrayList<IFileManager> file, IOption dst) {
 
     }
 }

@@ -6,7 +6,7 @@ abstract class Counter implements ICounter {
     Integer count = 0;
     boolean whiteSpace = false;
 
-    abstract public void process(ArrayList<IFileManager> file, IOption opt) throws IOException, URISyntaxException;
+    abstract public void count(ArrayList<IFileManager> file, IOption opt) throws IOException, URISyntaxException;
     public Integer getCount() {
         return this.count;
     }

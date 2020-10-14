@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class LineCounter extends Counter {
 
     @Override
-    public void process(ArrayList<IFileManager> file, IOption opt) throws IOException, URISyntaxException {
+    public void count(ArrayList<IFileManager> file, IOption opt) throws IOException, URISyntaxException {
         System.out.println("\n---------- Line Counter Program ----------");
 
             count = 0;
