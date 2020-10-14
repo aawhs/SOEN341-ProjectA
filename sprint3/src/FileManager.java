@@ -96,7 +96,7 @@ public class FileManager implements IFileManager {
         }
         System.out.println("\nSource File");
         System.out.println("[OK] srcFilePath = '" + getAbsolutePath() +"'\n"+
-                "[OK] srcFileName = '" + srcFile.getName() + "'\n");
+                "[OK] srcFileName = '" + srcFile.getName() + "'");
         return true;
 
     }

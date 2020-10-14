@@ -53,7 +53,7 @@ public class Administrator {
 
     public void execute() throws IOException, URISyntaxException {
         //Processing All Files
-        counter.process(file, option);
+        counter.count(file, option);
 
         //Closing All Files
         for (IFileManager iFileManager : file)
