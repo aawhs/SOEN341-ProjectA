@@ -1,5 +1,6 @@
 import java.io.IOException;
 import java.net.URISyntaxException;
+import java.util.ArrayList;
 
 public class WcCounter extends Counter{
     ICounter counter;
@@ -7,22 +8,27 @@ public class WcCounter extends Counter{
 
 
     @Override
-    public void process(IFilePath file, IOption opt) {
-        //Character Counter
+    public void process(ArrayList<IFileManager> file, IOption opt) {
+        System.out.println("\n---------- WC Program ----------");
+
     	try {
-        counter = counterFactory.getCounter("charcount");
-        counter.process(file,opt);
-        file.reset();
+    	    for(int i = 0; i < file.size() ; i++){
+                //Character Counter
+                counter = counterFactory.getCounter("charcount");
+                counter.process(file,opt);
+                file.get(i).reset();
 
-        //Word Counter
-        counter = counterFactory.getCounter("wordcount");
-        counter.process(file,opt);
-        file.reset();
+                //Word Counter
+                counter = counterFactory.getCounter("wordcount");
+                counter.process(file,opt);
+                file.get(i).reset();
 
-        //Line Counter
-        counter = counterFactory.getCounter("linecount");
-        counter.process(file,opt);
-        file.reset();
+                //Line Counter
+                counter = counterFactory.getCounter("linecount");
+                counter.process(file,opt);
+                file.get(i).reset();
+            }
+
     	}
     	catch (IOException e) {
     		System.out.println("Error in reading files");
@@ -30,10 +36,5 @@ public class WcCounter extends Counter{
     	catch (URISyntaxException e2) {
     		System.out.println("URI Syntax error");
     	}
-    }
-
-    @Override
-    public void process(IFilePath file, Object dst, IOption opt) throws IOException {
-
     }
 }

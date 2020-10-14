@@ -1,26 +1,25 @@
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
 
-public class Administrator{
+public class Administrator {
     OptionFactory optionFactory = new OptionFactory();
     CounterFactory counterFactory = new CounterFactory();
 
     IOption option;
     ICounter counter;
 
-    ArrayList<IFilePath> file = new ArrayList<>();
+    ArrayList<IFileManager> file = new ArrayList<>();
 
     public static void main(String[] args) throws IOException, URISyntaxException {
-        args = new String[]{"wc","test.txt"};
+        args = new String[]{"wc", "-v", "test.txt"};
         Administrator admin = new Administrator();
         admin.parse(args);
-        admin.process();
+        admin.execute();
     }
 
     //needs comments
-    public void parse(String[] args) throws IOException, URISyntaxException {
+    public void parse(String[] args){
 
         //Asserting Arguments
         if (args.length == 0) {
@@ -40,78 +39,24 @@ public class Administrator{
         }
 
         //Instantiating File Objects
+        int j = 0;
         if (!option.isEnabled()) {
             for (int i = 1; i < args.length; i++) {
-                file.add(new FilePath(args[i]));
+                file.add(new FileManager(args[i]));
             }
         } else {
             for (int i = 2; i < args.length; i++) {
-                file.add(new FilePath(args[i]));
+                file.add(new FileManager(args[i]));
             }
         }
     }
 
-    public void process() throws IOException, URISyntaxException {
+    public void execute() throws IOException, URISyntaxException {
         //Processing All Files
-        for (IFilePath iFilePath : file)
-            counter.process(iFilePath, option);
-
+        counter.process(file, option);
 
         //Closing All Files
-        for (IFilePath iFilePath : file)
-            iFilePath.close();
+        for (IFileManager iFileManager : file)
+            iFileManager.close();
     }
-
-    /*
-
-        if(args.length == 0)
-            return;
-        for(int i = 0; i < args.length; i++){
-            if(args[i] != null){
-                for(int k = 0; k< args.length; k++){
-                    if(args[k].contains("-")){
-                        option = optionFactory.getOption(args[k]);
-                        option.process();
-                    }else if(option == null){
-                        option = optionFactory.getOption(null);
-                    }
-                }
-                counter = counterFactory.getCounter((args[i]));
-                for(int j = 0; j< args.length ; j++){
-                    if(counter.getClass().getName().equals("CopyCounter")){
-                        if(option.isEnabled()){
-                            file[j] = new FilePath(args[i+2]);
-                            counter.process(file, args[i+3], option);
-                            break;
-                        }
-                        file[j] = new FilePath(args[i+1]);
-                        counter.process(file, args[i+2], option);
-                        break;
-                    }else if(!option.isEnabled()){
-                        file[j] = new FilePath(args[j+1]);
-                        break;
-                    }else{
-                        file[j] = new FilePath(args[j+2]);
-                        break;
-                    }
-                }
-                if(!option.isEnabled()) {
-                    counter.process(file, option);
-                }else{
-                    counter.process(file, option);
-                }
-
-            }
-            return;
-
-        }
-
-        for(int i = 0; i < file.length ; i++){
-            file[i].close();
-        }
-    }
-
-
-
-     */
 }

@@ -1,29 +1,29 @@
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.net.URISyntaxException;
+import java.util.ArrayList;
 
 public class CopyCounter extends Counter {
-
-
     @Override
-    public void process(IFilePath file, IOption opt) throws IOException {
-
-    }
-
-    @Override
-    public void process(IFilePath file, Object dstFileName, IOption opt) throws IOException {
-        File dstFile = new File((String) dstFileName);
-        FileOutputStream dstStream = new FileOutputStream(dstFile);
-
-
+    public void process(ArrayList<IFileManager> file, IOption opt) throws IOException, URISyntaxException {
+        System.out.println("---------- Copy Counter Program ----------");
         int c;
-        file.canReadFile();
-        while ( (c = file.getFile().read()) != EOF ) {
-            dstStream.write(c);
-            if(opt.isEnabled() && opt.isRequired()){
-                System.out.print(".");
+        if(file != null){
+            file.get(0).openInputStream();
+            file.get(0).canReadFile();
+            file.get(1).openOutputStream();
+            if (opt.isEnabled() && opt.isRequired()) {
+                System.out.print("Verbose : ");
             }
+            while ( (c = file.get(0).getFile().read()) != EOF ) {
+                file.get(1).getFileOutStream().write(c);
+                if(opt.isEnabled() && opt.isRequired()){
+                    System.out.print(".");
+                }
+            }
+            System.out.println("Copying Done");
+            file.get(1).dstFilePath();
         }
-        System.out.println("Copy Done");
     }
 }

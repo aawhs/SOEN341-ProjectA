@@ -1,21 +1,20 @@
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
+import java.io.*;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
-public interface IFilePath {
+public interface IFileManager {
     boolean canReadFile();
     boolean isOpen();
-    void getFilePath(String args) throws URISyntaxException;
+    void setFilePath() throws URISyntaxException;
     void openFile() throws URISyntaxException;
-    void open() throws FileNotFoundException, URISyntaxException;
+    void openInputStream() throws FileNotFoundException, URISyntaxException;
+    void openOutputStream() throws FileNotFoundException, URISyntaxException;
     void close() throws IOException;
     void reset() throws IOException, URISyntaxException;
+    void dstFilePath();
     FileInputStream getFile();
-
+    FileOutputStream getFileOutStream();
 }
 

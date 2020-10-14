@@ -1,33 +1,38 @@
 import java.io.IOException;
+import java.net.URISyntaxException;
+import java.util.ArrayList;
 
 public class WordCounter extends Counter {
 
     @Override
-    public void process(IFilePath file, IOption opt) throws IOException {
+    public void process(ArrayList<IFileManager> file, IOption opt) throws IOException, URISyntaxException {
+        System.out.println("\n---------- Word Counter Program ----------");
         int character;
             count = 0;
             if(file != null) {
-                file.canReadFile();
-                while ((character = file.getFile().read()) != EOF) {
-
-                    if (isSpace(character)) {
-                        if (!whiteSpace) {
-                            whiteSpace = true;
-                            ++count;
-                            if (opt.isEnabled() && opt.isRequired()) {
-                                System.out.print("w");
-                            }
-                        }
-                        whiteSpace = false;
+                for (IFileManager iFileManager : file) {
+                    iFileManager.openInputStream();
+                    iFileManager.canReadFile();
+                    if (opt.isEnabled() && opt.isRequired()) {
+                        System.out.print("Verbose : ");
                     }
+                while ((character = iFileManager.getFile().read()) != EOF) {
+
+                        if (isSpace(character)) {
+                            if (!whiteSpace) {
+                                whiteSpace = true;
+                                ++count;
+                                if (opt.isEnabled() && opt.isRequired()) {
+                                    System.out.print("w");
+                                }
+                            }
+                            whiteSpace = false;
+                        }
+                    }
+                    System.out.println("\nWords Count : " + getCount());
+                    count = 0;
                 }
-                System.out.println("\nWords Count : " + getCount());
+
             }
     }
-
-    @Override
-    public void process(IFilePath file, Object dst, IOption opt) throws IOException {
-
-    }
-
 }
