@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class WordCounter extends Counter {
 
     @Override
-    public void process(ArrayList<IFileManager> file, IOption opt) throws IOException, URISyntaxException {
+    public void count(ArrayList<IFileManager> file, IOption opt) throws IOException, URISyntaxException {
         System.out.println("\n---------- Word Counter Program ----------");
         int character;
             count = 0;
@@ -16,7 +16,7 @@ public class WordCounter extends Counter {
                     if (opt.isEnabled() && opt.isRequired()) {
                         System.out.print("Verbose : ");
                     }
-                while ((character = iFileManager.getFile().read()) != EOF) {
+                while ((character = iFileManager.getFileInStream().read()) != EOF) {
 
                         if (isSpace(character)) {
                             if (!whiteSpace) {

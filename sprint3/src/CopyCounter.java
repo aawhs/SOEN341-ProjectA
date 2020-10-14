@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public class CopyCounter extends Counter {
     @Override
-    public void process(ArrayList<IFileManager> file, IOption opt) throws IOException, URISyntaxException {
+    public void count(ArrayList<IFileManager> file, IOption opt) throws IOException, URISyntaxException {
         System.out.println("---------- Copy Counter Program ----------");
         int c;
         if(file != null){
@@ -16,7 +16,7 @@ public class CopyCounter extends Counter {
             if (opt.isEnabled() && opt.isRequired()) {
                 System.out.print("Verbose : ");
             }
-            while ( (c = file.get(0).getFile().read()) != EOF ) {
+            while ( (c = file.get(0).getFileInStream().read()) != EOF ) {
                 file.get(1).getFileOutStream().write(c);
                 if(opt.isEnabled() && opt.isRequired()){
                     System.out.print(".");

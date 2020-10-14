@@ -12,5 +12,6 @@ public class wcOO {
         //args = new String[]{"charcount", "test.txt"};
         Administrator admin = new Administrator();
         admin.parse(args);
+        admin.execute();
     }
 }
