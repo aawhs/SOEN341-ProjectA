@@ -7,7 +7,6 @@ import java.nio.file.Paths;
 public class FileManager implements IFileManager {
 
     Path srcPath;
-    Path filePath;
     private URL filePathSystem;
     private String fileName;
     private File srcFile;
@@ -25,7 +24,6 @@ public class FileManager implements IFileManager {
     //Methods
     public void setFilePath() {
         srcPath = Paths.get(fileName);
-        filePath = srcPath.getFileName();
         filePathSystem = ClassLoader.getSystemResource(srcPath.toString());
     }
 
