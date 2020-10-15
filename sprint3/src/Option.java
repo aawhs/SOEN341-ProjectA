@@ -2,6 +2,8 @@ import java.util.Arrays;
 
 public abstract class Option implements IOption{
 
+
+
     //Constructor
     public Option(String[] optShort, String optLong){
         setOptShort(optShort);
@@ -28,12 +30,12 @@ public abstract class Option implements IOption{
     protected boolean req;
 
     //Set & Get Functions
-    protected final void setOptShort(String[] opt){this.optShort  = opt;}
-    protected final void setOptLong (String opt)  {this.optLong   = opt;}
-    protected final void setUsage(String usage)   {this.usage     = usage;}
-    protected final void setClassName(String name){this.className = name;}
-    public final void setEnable(boolean en)     {this.en        = en;}
-    public final void setReq(boolean req)     {this.req        = req;}
+    public void setOptShort(String[] opt){this.optShort  = opt;}
+    public void setOptLong (String opt)  {this.optLong   = opt;}
+    @Override public void setUsage(String usage)   {this.usage     = usage;}
+    @Override public void setClassName(String name){this.className = name;}
+    public void setEnable(boolean en)     {this.en        = en;}
+    public void setReq(boolean req)     {this.req        = req;}
 
     public final String[] getOptShort() {return this.optShort;}
     public final String   getOptLong()  {return this.optLong;}
@@ -41,34 +43,19 @@ public abstract class Option implements IOption{
     public final String   getClassName(){return this.className;}
 
 
-    //Assertions
-    @Override
-    public boolean isValid(){
-        if(optShort.length != 0) {
-            return true;
-        }
-        return false;
-    }
-
     @Override
     public boolean isOption(){
-        if(Arrays.toString(optShort).contains("-"))
-            return true;
-        return false;
+        return Arrays.toString(optShort).contains("-");
     }
 
     @Override
     public boolean isEnabled() {
-        if(this.en)
-            return true;
-        return false;
+        return this.en;
     }
 
     @Override
     public boolean isRequired() {
-        if(this.req)
-            return true;
-        return false;
+        return this.req;
     }
 }
 

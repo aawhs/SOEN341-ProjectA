@@ -6,6 +6,7 @@ import java.util.ArrayList;
 public interface ICounter {
     int EOF = -1;
     void count(ArrayList<IFileManager> fileList, IOption opt) throws IOException, URISyntaxException;
+    void optConfig(IOption opt);
     Integer getCount();
 }
 

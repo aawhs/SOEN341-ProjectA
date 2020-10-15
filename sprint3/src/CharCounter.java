@@ -8,6 +8,8 @@ public class CharCounter extends Counter {
     public void count(ArrayList<IFileManager> file, IOption opt) throws IOException, URISyntaxException {
         System.out.println("\n---------- Character Counter Program ----------");
         count = 0;
+        optConfig(opt);
+        opt.process();
         if(file != null){
             for (IFileManager iFileManager : file) {
                 iFileManager.openInputStream();
@@ -21,9 +23,19 @@ public class CharCounter extends Counter {
                         System.out.print("c");
                     }
                 }
-                System.out.println("Characters Count: " + getCount());
+                System.out.println("\nCharacters Count: " + getCount());
                 count = 0;
             }
         }
+    }
+
+    @Override
+    public void optConfig(IOption opt){
+        if(opt.isEnabled()){
+            opt.setUsage("CommandLine = wcOO charcount [Option] {SourceFilePath+}");
+            opt.setClassName("charcount");
+
+        }
+
     }
 }

@@ -7,6 +7,10 @@ public class WordCounter extends Counter {
     @Override
     public void count(ArrayList<IFileManager> file, IOption opt) throws IOException, URISyntaxException {
         System.out.println("\n---------- Word Counter Program ----------");
+
+        optConfig(opt);
+        opt.process();
+
         int character;
             count = 0;
             if(file != null) {
@@ -34,5 +38,14 @@ public class WordCounter extends Counter {
                 }
 
             }
+    }
+
+    @Override
+    public void optConfig(IOption opt){
+        if(opt.isEnabled()){
+            opt.setUsage("CommandLine = wcOO wordcount [Option] {SourceFilePath+}");
+            opt.setClassName("wordcount");
+        }
+
     }
 }

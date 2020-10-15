@@ -6,14 +6,14 @@ public class WcCounter extends Counter{
     ICounter counter;
     CounterFactory counterFactory= new CounterFactory();
 
-
     @Override
     public void count(ArrayList<IFileManager> file, IOption opt) {
         System.out.println("\n---------- WC Program ----------");
 
+        optConfig(opt);
+        opt.process();
 
     	try {
-    	    for(int i = 0; i < file.size() ; i++){
                 //Character Counter
                 counter = counterFactory.getCounter("charcount");
                 counter.count(file,opt);
@@ -25,7 +25,6 @@ public class WcCounter extends Counter{
                 //Line Counter
                 counter = counterFactory.getCounter("linecount");
                 counter.count(file,opt);
-            }
 
     	}
     	catch (IOException e) {
@@ -34,5 +33,13 @@ public class WcCounter extends Counter{
     	catch (URISyntaxException e2) {
     		System.out.println("URI Syntax error");
     	}
+    }
+
+    @Override
+    public void optConfig(IOption opt){
+        if(opt.isEnabled()){
+            opt.setUsage("CommandLine = wcOO wc [Option] {SourceFilePath+}");
+            opt.setClassName("wc");
+        }
     }
 }

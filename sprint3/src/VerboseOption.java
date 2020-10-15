@@ -1,4 +1,5 @@
 public class VerboseOption extends Option {
+    String verboseCharacter;
     public VerboseOption() {
         super(new String[]{"-v"}, "-verbose");
         setEnable(true);
@@ -9,6 +10,4 @@ public class VerboseOption extends Option {
     public void process() {
         setReq(true);
     }
-
-
 }

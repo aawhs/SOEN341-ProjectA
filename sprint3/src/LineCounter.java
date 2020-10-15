@@ -8,6 +8,9 @@ public class LineCounter extends Counter {
     public void count(ArrayList<IFileManager> file, IOption opt) throws IOException, URISyntaxException {
         System.out.println("\n---------- Line Counter Program ----------");
 
+        optConfig(opt);
+        opt.process();
+
             count = 0;
             if (file != null) {
                 for (IFileManager iFileManager : file) {
@@ -29,6 +32,15 @@ public class LineCounter extends Counter {
 
             }
 
+
+    }
+
+    @Override
+    public void optConfig(IOption opt){
+        if(opt.isEnabled()){
+            opt.setUsage("CommandLine = wcOO linecount [Option] {SourceFilePath+}");
+            opt.setClassName("linecount");
+        }
 
     }
 }

@@ -6,16 +6,15 @@ public interface IOption {
                 "VerboseOption = \"-v\" | \"-verbose\"\n" +
                 "BannerOption  = \"-b\" | \"-banner\"\n");
     }
-    boolean isValid();
+
     boolean isOption();
     boolean isEnabled();
     boolean isRequired();
     void process();
-    String[] getOptShort();
-    String getOptLong   ();
-    String getUsage     ();
-    String getClassName ();
     void setEnable(boolean en);
+    void setUsage(String usage);
+    void setClassName(String className);
+
 }
 
 

@@ -18,4 +18,9 @@ public class CounterList extends Counter{
     public void count(ArrayList<IFileManager> file, IOption dst) {
 
     }
+
+    @Override
+    public void optConfig(IOption opt) {
+
+    }
 }
