@@ -8,7 +8,7 @@ public class BannerOption extends Option {
 
     @Override
     public void process() {
-        System.out.println("wcOO Version 1.2\n" +
+        System.out.println("wcOO "+ getClassName() + " Version 1.2\n" +
                 "Copyright (C) Concordia University 2020. All Rights Reserved.\n" +
                 "Written by Ahmed Ali\n");
 

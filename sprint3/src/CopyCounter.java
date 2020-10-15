@@ -8,6 +8,10 @@ public class CopyCounter extends Counter {
     @Override
     public void count(ArrayList<IFileManager> file, IOption opt) throws IOException, URISyntaxException {
         System.out.println("---------- Copy Counter Program ----------");
+
+        optConfig(opt);
+
+        opt.process();
         int c;
         if(file != null){
             file.get(0).openInputStream();
@@ -25,5 +29,14 @@ public class CopyCounter extends Counter {
             System.out.println("Copying Done");
             file.get(1).dstFilePath();
         }
+    }
+
+    @Override
+    public void optConfig(IOption opt){
+        if(opt.isEnabled()){
+            opt.setUsage("CommandLine = wcOO copy [Option] {SourceFilePath} {DestinationFilePath}");
+            opt.setClassName("copy");
+        }
+
     }
 }

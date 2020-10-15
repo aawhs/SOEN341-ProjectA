@@ -35,7 +35,6 @@ public class Administrator {
         //Instantiating Option Object
         if (args[1].contains("-")) {
             option = optionFactory.getOption(args[1]);
-            option.process();
         } else {
             option = optionFactory.getOption(null);
         }

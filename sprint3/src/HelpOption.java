@@ -10,11 +10,13 @@ public class HelpOption extends Option {
     @Override
     public void printUsage() {
         //System.out.println("\n"+ usage);
-        System.out.println("CommandLine = wcOO CommandName { Option } { Argument }\n" +
+        System.out.println(
+                getUsage()+
+                "\n\n" +
                 "Options Available\n"+
-                "HelpOption    = \"-?\" | \"-h\" | \"-help\"\n" +
-                "VerboseOption = \"-v\" | \"-verbose\"\n" +
-                "BannerOption  = \"-b\" | \"-banner\"\n");
+                "Help    = \"-?\" | \"-h\" | \"-help\"\n" +
+                "Verbose = \"-v\" | \"-verbose\"\n" +
+                "Banner  = \"-b\" | \"-banner\"\n");
     }
 
     @Override
