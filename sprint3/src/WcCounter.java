@@ -2,29 +2,32 @@ import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
 
-public class WcCounter extends Counter{
+class WcCounter extends Counter{
     ICounter counter;
     CounterFactory counterFactory= new CounterFactory();
 
     @Override
-    public void count(ArrayList<IFileManager> file, IOption opt) {
-        System.out.println("\n---------- WC Program ----------");
-
-        optConfig(opt);
-        opt.process();
+    public void count(ArrayList<String> line) {
+        System.out.println("\n================ WC Program ================");
 
     	try {
                 //Character Counter
-                counter = counterFactory.getCounter("charcount");
-                counter.count(file,opt);
+                counter = counterFactory.createCounter("charcount");
+                counter.setOpt(opt);
+                counter.count(line);
+                resetCount();
 
                 //Word Counter
-                counter = counterFactory.getCounter("wordcount");
-                counter.count(file,opt);
+                counter = counterFactory.createCounter("wordcount");
+                counter.setOpt(opt);
+                counter.count(line);
+                resetCount();
 
                 //Line Counter
-                counter = counterFactory.getCounter("linecount");
-                counter.count(file,opt);
+                counter = counterFactory.createCounter("linecount");
+                counter.setOpt(opt);
+                counter.count(line);
+                resetCount();
 
     	}
     	catch (IOException e) {
@@ -36,10 +39,7 @@ public class WcCounter extends Counter{
     }
 
     @Override
-    public void optConfig(IOption opt){
-        if(opt.isEnabled()){
-            opt.setUsage("CommandLine = wcOO wc [Option] {SourceFilePath+}");
-            opt.setClassName("wc");
-        }
+    public void setFiles(ArrayList<IFileManager> file) {
+
     }
 }

@@ -3,15 +3,18 @@ import java.net.URISyntaxException;
 import java.util.ArrayList;
 
 abstract class Counter implements ICounter {
-    Integer count = 0;
-    boolean whiteSpace = false;
+    static Integer count = 0;
+    boolean isWord = false;
+    IOption opt;
 
-    abstract public void count(ArrayList<IFileManager> file, IOption opt) throws IOException, URISyntaxException;
+    abstract public void count(ArrayList<String> line) throws IOException, URISyntaxException;
 
+    public void resetCount(){count = 0;}
     public Integer getCount() {
-        return this.count;
+        return count;
     }
     public boolean isSpace(Integer C) {
         return (C == ' ' || C == '\t');
     }
+    public void setOpt(IOption opt){this.opt = opt;}
 }

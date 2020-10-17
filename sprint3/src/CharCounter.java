@@ -1,41 +1,34 @@
-import java.io.IOException;
-import java.net.URISyntaxException;
 import java.util.ArrayList;
 
-public class CharCounter extends Counter {
-
+class CharCounter extends Counter {
     @Override
-    public void count(ArrayList<IFileManager> file, IOption opt) throws IOException, URISyntaxException {
-        System.out.println("\n---------- Character Counter Program ----------");
-        count = 0;
-        optConfig(opt);
-        opt.process();
-        if(file != null){
-            for (IFileManager iFileManager : file) {
-                iFileManager.openInputStream();
-                iFileManager.canReadFile();
-                if (opt.isEnabled() && opt.isRequired()) {
-                    System.out.print("Verbose : ");
-                }
-                while ((iFileManager.getFileInStream().read()) != EOF) {
+    public void count(ArrayList<String> line){
+        for (String s : line) {
+            for (int j = 0; j < s.length(); j++) {
+                if (!isSpace((int) s.charAt(j))) {
                     ++count;
-                    if (opt.isEnabled() && opt.isRequired()) {
-                        System.out.print("c");
-                    }
                 }
-                System.out.println("\nCharacters Count: " + getCount());
-                count = 0;
             }
         }
+
+        if (opt.isEnabled() && opt.isRequired() && opt.getClass().getName().equals("VerboseOption")) {
+            System.out.print("Verbose : ");
+            for(int i = 0; i <= count; i++)
+                System.out.print("c");
+        }
+
+        System.out.println("\nCharacter Count : " + getCount());
+        count = 0;
     }
 
     @Override
-    public void optConfig(IOption opt){
-        if(opt.isEnabled()){
-            opt.setUsage("CommandLine = wcOO charcount [Option] {SourceFilePath+}");
-            opt.setClassName("charcount");
+    public void resetCount() {
+        count = 0;
+    }
 
-        }
+    @Override
+    public void setFiles(ArrayList<IFileManager> file) {
 
     }
+
 }
