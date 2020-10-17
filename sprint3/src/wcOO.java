@@ -18,7 +18,7 @@ public class wcOO {
     private static Administrator admin;
 
     public static void main(String [] args) throws IOException, URISyntaxException {
-        //args = new String[]{"copy","-v","test.txt", "testnew.txt"};
+        //args = new String[]{"copy","-v","test.txt"};
         admin = new Administrator();
         admin.parse(args);
         wcOO.init();
