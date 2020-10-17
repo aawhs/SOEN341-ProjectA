@@ -1,4 +1,4 @@
-public class VerboseOption extends Option {
+class VerboseOption extends Option {
     String verboseCharacter;
     public VerboseOption() {
         super(new String[]{"-v"}, "-verbose");

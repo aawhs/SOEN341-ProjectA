@@ -18,7 +18,6 @@ public class OptionFactory {
 
         if(h){
             return new HelpOption();
-
         } else if (v){
             return new VerboseOption();
 

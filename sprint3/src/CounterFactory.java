@@ -1,5 +1,5 @@
 public class CounterFactory {
-    public Counter getCounter(String counterType){
+    public Counter createCounter(String counterType){
         if(counterType == null) {
             return null;
         }

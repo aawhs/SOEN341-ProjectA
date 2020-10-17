@@ -1,51 +1,41 @@
-import java.io.IOException;
-import java.net.URISyntaxException;
 import java.util.ArrayList;
 
-public class WordCounter extends Counter {
-
+class WordCounter extends Counter {
     @Override
-    public void count(ArrayList<IFileManager> file, IOption opt) throws IOException, URISyntaxException {
-        System.out.println("\n---------- Word Counter Program ----------");
+    public void count(ArrayList<String> line){
+        char[] characters;
 
-        optConfig(opt);
-        opt.process();
-
-        int character;
-            count = 0;
-            if(file != null) {
-                for (IFileManager iFileManager : file) {
-                    iFileManager.openInputStream();
-                    iFileManager.canReadFile();
-                    if (opt.isEnabled() && opt.isRequired()) {
-                        System.out.print("Verbose : ");
-                    }
-                while ((character = iFileManager.getFileInStream().read()) != EOF) {
-
-                        if (isSpace(character)) {
-                            if (!whiteSpace) {
-                                whiteSpace = true;
-                                ++count;
-                                if (opt.isEnabled() && opt.isRequired()) {
-                                    System.out.print("w");
-                                }
-                            }
-                            whiteSpace = false;
-                        }
-                    }
-                    System.out.println("\nWords Count : " + getCount());
-                    count = 0;
+        for (String s : line) {
+            characters = s.toCharArray();
+            for (int j = 0; j < characters.length; j++) {
+                if (Character.isLetter(characters[j]) && j != characters.length - 1) {
+                    isWord = true;
+                } else if (!Character.isLetter(characters[j]) && isWord) {
+                    count++;
+                    isWord = false;
+                } else if (Character.isLetter(characters[j]) && j == characters.length - 1) {
+                    count++;
                 }
-
             }
+        }
+
+        if (opt.isEnabled() && opt.isRequired() && opt.getClass().getName().equals("VerboseOption")) {
+            System.out.print("Verbose : ");
+            for(int i = 0; i <= count; i++)
+                System.out.print("w");
+        }
+
+        System.out.println("\nWords Count : " + getCount());
+        count = 0;
     }
 
     @Override
-    public void optConfig(IOption opt){
-        if(opt.isEnabled()){
-            opt.setUsage("CommandLine = wcOO wordcount [Option] {SourceFilePath+}");
-            opt.setClassName("wordcount");
-        }
+    public void setFiles(ArrayList<IFileManager> file) {
 
+    }
+
+    @Override
+    public void resetCount() {
+        count = 0;
     }
 }

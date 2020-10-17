@@ -1,46 +1,27 @@
-import java.io.*;
-import java.net.URISyntaxException;
 import java.util.ArrayList;
 
-public class LineCounter extends Counter {
+class LineCounter extends Counter {
 
     @Override
-    public void count(ArrayList<IFileManager> file, IOption opt) throws IOException, URISyntaxException {
-        System.out.println("\n---------- Line Counter Program ----------");
+    public void count(ArrayList<String> line){
+        count = line.size();
 
-        optConfig(opt);
-        opt.process();
+        if (opt.isEnabled() && opt.isRequired() && opt.getClass().getName().equals("VerboseOption")) {
+            System.out.print("Verbose : ");
+            for(int i = 0; i <= count; i++)
+                System.out.print("l");
+        }
 
-            count = 0;
-            if (file != null) {
-                for (IFileManager iFileManager : file) {
-                    iFileManager.openInputStream();
-                    iFileManager.canReadFile();
-                    iFileManager.setBufferedReader();
-                    if (opt.isEnabled() && opt.isRequired()) {
-                        System.out.print("Verbose : ");
-                    }
-                    while ((iFileManager.getBufferedReader().readLine() != null)) {
-                            ++count;
-                            if (opt.isEnabled() && opt.isRequired()) {
-                                System.out.print("l");
-                            }
-                    }
-                    System.out.println("\nLines: " + (getCount()));
-                    count = 0;
-                }
-
-            }
-
-
+        System.out.println("\nLine Count : " + getCount());
+        count = 0;
     }
 
     @Override
-    public void optConfig(IOption opt){
-        if(opt.isEnabled()){
-            opt.setUsage("CommandLine = wcOO linecount [Option] {SourceFilePath+}");
-            opt.setClassName("linecount");
-        }
+    public void setFiles(ArrayList<IFileManager> file) {
+    }
 
+    @Override
+    public void resetCount() {
+        count = 0;
     }
 }

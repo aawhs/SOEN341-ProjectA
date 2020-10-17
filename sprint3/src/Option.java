@@ -1,6 +1,6 @@
 import java.util.Arrays;
 
-public abstract class Option implements IOption{
+abstract class Option implements IOption{
 
 
 
