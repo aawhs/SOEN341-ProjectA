@@ -21,7 +21,7 @@ class HelpOption extends Option {
 
     public void setUsage(){
         switch (getClassName()){
-            case "Copy":
+            case "CopyCounter":
                 usage = "CommandLine = wcOO copy [Option] {SourceFilePath} {DestinationFilePath}";
                 break;
             case "CharCounter":

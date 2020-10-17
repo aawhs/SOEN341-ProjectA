@@ -9,7 +9,7 @@ class BannerOption extends Option {
     @Override
     public void process() {
         switch (getClassName()){
-            case "Copy":
+            case "CopyCounter":
                 System.out.println("wcOO copy Version 2.0\n" +
                         "Copyright (C) Concordia University 2020. All Rights Reserved.\n" +
                         "Written by TEAM C3\n");
