@@ -3,6 +3,7 @@ import java.util.ArrayList;
 public class Administrator {
     private static final OptionFactory optionFactory = new OptionFactory();
     private static final CounterFactory counterFactory = new CounterFactory();
+    private static Composite counterList = new Composite();
 
     private static IOption option;
     private static ICounter counter;
@@ -19,25 +20,20 @@ public class Administrator {
         }
 
         //Instantiating Counter Object
-        counter = counterFactory.createCounter(args[0]);
-
-        //Instantiating Option Object
-        if (args[1].contains("-")) {
-            option = optionFactory.getOption(args[1]);
-            option.setClassName(counter.getClass().getName());
-            option.process();
-        } else {
-            option = optionFactory.getOption(null);
-        }
-
-        //Instantiating File Objects
-        if (!option.isEnabled()) {
-            for (int i = 1; i < args.length; i++) {
-                file.add(new FileManager(args[i]));
-            }
-        } else {
-            for (int i = 2; i < args.length; i++) {
-                file.add(new FileManager(args[i]));
+        for (String arg : args) {
+            if (!arg.contains(".") && !arg.contains("-")) {
+                counter = counterFactory.createCounter(arg);
+                counterList.add(counter);
+            }else if (arg.contains("-")) {
+                //Instantiating Option Object
+                option = optionFactory.getOption(arg);
+                option.setClassName(counter.getClass().getName());
+                option.process();
+            } else if(arg.contains(".")){
+                //Instantiating File Objects
+                file.add(new FileManager(arg));
+            } else {
+                option = optionFactory.getOption(null);
             }
         }
     }
@@ -54,5 +50,7 @@ public class Administrator {
     public ArrayList<IFileManager> getFileList(){
         return file;
     }
+
+    public Composite getCounterList(){return counterList;}
 
 }
