@@ -1,4 +1,5 @@
 /out/
+/src/*.class
 *.class
 *.xml
 
