@@ -23,9 +23,13 @@ public class Composite extends Counter{
     public void count(ArrayList<String> line) throws IOException, URISyntaxException {
         for(ICounter obj:counters) {
             obj.setOpt(opt);
-            if(obj.getClass().getName().equals("CopyCounter"))
-                obj.setFiles(files);
+            obj.setFiles(files);
             obj.count(line);
         }
     }
+
+    public List<ICounter> getList(){
+        return counters;
+    }
+
 }
