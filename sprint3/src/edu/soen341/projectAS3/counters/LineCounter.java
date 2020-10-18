@@ -10,7 +10,7 @@ class LineCounter extends Counter {
     public void count(ArrayList<String> line){
         count = line.size();
 
-        if (opt.isEnabled() && opt.isRequired() && opt.getClass().getName().equals("VerboseOption")) {
+        if (opt.isEnabled() && opt.isRequired()) {
             System.out.print("Verbose : ");
             for(int i = 0; i < count; i++)
                 System.out.print("l");

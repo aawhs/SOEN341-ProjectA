@@ -23,7 +23,7 @@ class CopyCounter extends Counter{
                 count++;
             }
 
-            if (opt.isEnabled() && opt.isRequired() && opt.getClass().getName().equals("VerboseOption")) {
+            if (opt.isEnabled() && opt.isRequired()) {
                 System.out.print("Verbose : ");
                 for(int i = 0; i <= count; i++)
                     System.out.print(".");
