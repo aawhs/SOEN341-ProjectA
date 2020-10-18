@@ -33,16 +33,11 @@ public class Administrator {
             }else if (arg.contains("-")) {
                 //Instantiating Option Object
                 option = optionFactory.getOption(arg);
-                option.setClassName(counter.getClass().getName());
                 option.process();
             }else if(!arg.contains("-") && arg.contains(".")){
                 file.add(new FileManager(arg));
             }else if(arg.contains(".")){
                 file.add(new FileManager(arg));
-            }else {
-                option = optionFactory.getOption(null);
-                counter=counterFactory.createCounter("wc");
-                counterList.add(counter);
             }
         }
 
