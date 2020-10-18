@@ -33,7 +33,9 @@ public class Administrator {
             }else if (arg.contains("-")) {
                 //Instantiating Option Object
                 option = optionFactory.getOption(arg);
+                option.setClassName(counterList.getClass().getName());
                 option.process();
+                counterList.setOpt(option);
             }else if(!arg.contains("-") && arg.contains(".")){
                 file.add(new FileManager(arg));
             }else if(arg.contains(".")){
