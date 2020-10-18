@@ -27,6 +27,7 @@ public class wcOO {
         wcOO.execute();
     }
 
+    //Initalizes the program with lines from file, counters and options given user input
     private static void init(){
         //Initializing Objects
         data = new ArrayList<>();
@@ -37,6 +38,7 @@ public class wcOO {
 
     }
 
+    //Interpret the file contents and call count method on all counter objects from counterList
     private static void execute(){
         System.out.println("\n================ wcOO Program ================");
         try {
