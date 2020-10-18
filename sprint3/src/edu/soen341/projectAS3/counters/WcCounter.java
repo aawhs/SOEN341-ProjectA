@@ -1,3 +1,7 @@
+package edu.soen341.projectAS3.counters;
+
+import edu.soen341.projectAS3.fileManager.IFileManager;
+
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
@@ -8,8 +12,6 @@ class WcCounter extends Counter{
 
     @Override
     public void count(ArrayList<String> line) {
-        System.out.println("\n================ WC Program ================");
-
     	try {
                 //Character Counter
                 counter = counterFactory.createCounter("charcount");

@@ -1,3 +1,5 @@
+package edu.soen341.projectAS3.options;
+
 import java.util.Arrays;
 
 abstract class Option implements IOption{
@@ -50,7 +52,7 @@ abstract class Option implements IOption{
 
     @Override
     public boolean isEnabled() {
-        return this.en;
+        return en;
     }
 
     @Override

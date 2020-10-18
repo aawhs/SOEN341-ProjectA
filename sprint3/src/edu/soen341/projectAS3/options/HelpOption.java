@@ -1,3 +1,5 @@
+package edu.soen341.projectAS3.options;
+
 import static java.lang.System.exit;
 
 class HelpOption extends Option {
@@ -21,7 +23,7 @@ class HelpOption extends Option {
 
     public void setUsage(){
         switch (getClassName()){
-            case "Copy":
+            case "CopyCounter":
                 usage = "CommandLine = wcOO copy [Option] {SourceFilePath} {DestinationFilePath}";
                 break;
             case "CharCounter":

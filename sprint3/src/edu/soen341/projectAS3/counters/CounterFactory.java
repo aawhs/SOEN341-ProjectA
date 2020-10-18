@@ -1,3 +1,5 @@
+package edu.soen341.projectAS3.counters;
+
 public class CounterFactory {
     public Counter createCounter(String counterType){
         if(counterType == null) {

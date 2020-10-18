@@ -1,5 +1,6 @@
+package edu.soen341.projectAS3.options;
+
 class VerboseOption extends Option {
-    String verboseCharacter;
     public VerboseOption() {
         super(new String[]{"-v"}, "-verbose");
         setEnable(true);

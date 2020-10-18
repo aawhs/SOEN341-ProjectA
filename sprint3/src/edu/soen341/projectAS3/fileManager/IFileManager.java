@@ -1,7 +1,10 @@
+package edu.soen341.projectAS3.fileManager;
+
 import java.io.*;
 import java.net.URISyntaxException;
 
 public interface IFileManager {
+    String getFileName();
     boolean canReadFile();
     boolean isOpen();
     void setFilePath() throws URISyntaxException;

@@ -1,3 +1,8 @@
+package edu.soen341.projectAS3.counters;
+
+import edu.soen341.projectAS3.fileManager.IFileManager;
+import edu.soen341.projectAS3.options.IOption;
+
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.ArrayList;

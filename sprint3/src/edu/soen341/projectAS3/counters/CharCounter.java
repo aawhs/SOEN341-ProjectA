@@ -1,3 +1,7 @@
+package edu.soen341.projectAS3.counters;
+
+import edu.soen341.projectAS3.fileManager.IFileManager;
+
 import java.util.ArrayList;
 
 class CharCounter extends Counter {
@@ -13,11 +17,11 @@ class CharCounter extends Counter {
 
         if (opt.isEnabled() && opt.isRequired() && opt.getClass().getName().equals("VerboseOption")) {
             System.out.print("Verbose : ");
-            for(int i = 0; i <= count; i++)
+            for(int i = 0; i < count; i++)
                 System.out.print("c");
         }
 
-        System.out.println("\nCharacter Count : " + getCount());
+        System.out.println("\nCharacter Count : " + getCount()+"\n");
         count = 0;
     }
 
