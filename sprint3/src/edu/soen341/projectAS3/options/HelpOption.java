@@ -1,3 +1,5 @@
+package edu.soen341.projectAS3.options;
+
 import static java.lang.System.exit;
 
 class HelpOption extends Option {

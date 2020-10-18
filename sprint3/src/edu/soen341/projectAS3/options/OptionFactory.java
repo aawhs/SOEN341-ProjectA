@@ -1,3 +1,5 @@
+package edu.soen341.projectAS3.options;
+
 public class OptionFactory {
     public Option getOption(String optionType){
         if(optionType == null){

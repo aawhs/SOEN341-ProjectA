@@ -1,3 +1,9 @@
+package edu.soen341.projectAS3.administrator;
+
+import edu.soen341.projectAS3.counters.*;
+import edu.soen341.projectAS3.fileManager.*;
+import edu.soen341.projectAS3.options.*;
+
 import java.util.ArrayList;
 
 public class Administrator {

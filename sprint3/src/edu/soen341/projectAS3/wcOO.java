@@ -1,3 +1,10 @@
+package edu.soen341.projectAS3;
+
+import edu.soen341.projectAS3.administrator.Administrator;
+import edu.soen341.projectAS3.counters.*;
+import edu.soen341.projectAS3.fileManager.*;
+import edu.soen341.projectAS3.options.*;
+
 import java.io.*;
 import java.util.*;
 import java.net.*;
@@ -13,14 +20,14 @@ public class wcOO {
     private static Administrator admin;
 
     public static void main(String [] args){
-        //args = new String[]{"wc","test.txt", "testingComposite.txt"};
+        args = new String[]{"charcount","test.txt", "testingComposite.txt"};
         admin = new Administrator();
         admin.parse(args);
         wcOO.init();
         wcOO.execute();
     }
 
-    public static void init(){
+    private static void init(){
         //Initializing Objects
         data = new ArrayList<>();
         counter = admin.getCounter();
@@ -30,7 +37,7 @@ public class wcOO {
 
     }
 
-    public static void execute(){
+    private static void execute(){
         System.out.println("\n================ wcOO Program ================");
         try {
             //Counters Processing

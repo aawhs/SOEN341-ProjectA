@@ -1,10 +1,12 @@
+package edu.soen341.projectAS3.fileManager;
+
 import java.io.*;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
-class FileManager implements IFileManager {
+public class FileManager implements IFileManager {
 
     Path srcPath;
     private URL filePathSystem;
@@ -17,7 +19,7 @@ class FileManager implements IFileManager {
 
 
 
-    FileManager(String args) {
+    public FileManager(String args) {
         this.fileName = args;
     }
 
