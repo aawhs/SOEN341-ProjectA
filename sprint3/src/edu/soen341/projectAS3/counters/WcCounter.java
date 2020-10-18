@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
 
+//Returns the number of characters, words and lines in the file.
 class WcCounter extends Counter{
     ICounter counter;
     CounterFactory counterFactory= new CounterFactory();

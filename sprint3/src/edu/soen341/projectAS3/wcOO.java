@@ -9,7 +9,7 @@ import java.io.*;
 import java.util.*;
 import java.net.*;
 
-
+//Main program file used to print number of characters, words, lines or copy contents to destination file
 public class wcOO {
 
     private static ICounter counter;

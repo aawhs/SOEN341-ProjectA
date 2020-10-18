@@ -1,5 +1,6 @@
 package edu.soen341.projectAS3.options;
 
+//Option factory returns the relevant options based on user input
 public class OptionFactory {
     public Option getOption(String optionType){
         if(optionType == null){

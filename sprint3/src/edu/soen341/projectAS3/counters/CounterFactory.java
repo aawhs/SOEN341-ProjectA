@@ -1,5 +1,6 @@
 package edu.soen341.projectAS3.counters;
 
+//CounterFactory returns counter object relevant to user arguments
 public class CounterFactory {
     public Counter createCounter(String counterType){
         if(counterType == null) {

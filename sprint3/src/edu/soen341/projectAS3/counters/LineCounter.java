@@ -4,8 +4,10 @@ import edu.soen341.projectAS3.fileManager.IFileManager;
 
 import java.util.ArrayList;
 
+//Counts the number of lines in file
 class LineCounter extends Counter {
 
+    //Returns the size of the ArrayList of lines
     @Override
     public void count(ArrayList<String> line){
         count = line.size();
