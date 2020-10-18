@@ -29,12 +29,24 @@ public class Administrator {
                 option = optionFactory.getOption(arg);
                 option.setClassName(counter.getClass().getName());
                 option.process();
-            } else if(arg.contains(".")){
-                //Instantiating File Objects
+            }else if(!arg.contains("-") && arg.contains(".")){
                 file.add(new FileManager(arg));
-            } else {
+            }else if(arg.contains(".")){
+                file.add(new FileManager(arg));
+            }else {
                 option = optionFactory.getOption(null);
+                counter=counterFactory.createCounter("wc");
+                counterList.add(counter);
             }
+        }
+
+        if(option == null){
+            option = optionFactory.getOption(null);
+        }
+
+        if(counter == null){
+            counter=counterFactory.createCounter("wc");
+            counterList.add(counter);
         }
     }
 

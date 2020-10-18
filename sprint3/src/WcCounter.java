@@ -8,8 +8,6 @@ class WcCounter extends Counter{
 
     @Override
     public void count(ArrayList<String> line) {
-        System.out.println("\n================ WC Program ================");
-
     	try {
                 //Character Counter
                 counter = counterFactory.createCounter("charcount");

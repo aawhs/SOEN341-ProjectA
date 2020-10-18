@@ -21,11 +21,11 @@ class WordCounter extends Counter {
 
         if (opt.isEnabled() && opt.isRequired() && opt.getClass().getName().equals("VerboseOption")) {
             System.out.print("Verbose : ");
-            for(int i = 0; i <= count; i++)
+            for(int i = 0; i < count; i++)
                 System.out.print("w");
         }
 
-        System.out.println("\nWords Count : " + getCount());
+        System.out.println("\nWords Count : " + getCount()+"\n");
         count = 0;
     }
 

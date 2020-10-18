@@ -12,8 +12,8 @@ public class wcOO {
     private static ArrayList<String> data;
     private static Administrator admin;
 
-    public static void main(String [] args) throws IOException, URISyntaxException {
-        //args = new String[]{"charcount","-v","test.txt", "testingComposite.txt"};
+    public static void main(String [] args){
+        //args = new String[]{"wc","test.txt", "testingComposite.txt"};
         admin = new Administrator();
         admin.parse(args);
         wcOO.init();
@@ -30,29 +30,57 @@ public class wcOO {
 
     }
 
-    public static void execute() throws IOException, URISyntaxException {
-        if(!counter.getClass().getName().equals("CopyCounter")) {
-            for (IFileManager iFileManager : file) {
-                iFileManager.openInputStream();
-                BufferedReader fileReader = new BufferedReader(new FileReader(iFileManager.getFile().getPath()));
-                while (fileReader.ready()) {
-                    data.add(fileReader.readLine());
+    public static void execute(){
+        System.out.println("\n================ wcOO Program ================");
+        try {
+            //Counters Processing
+            if (!counter.getClass().getName().equals("CopyCounter")) {
+                for (IFileManager iFileManager : file) {
+                    iFileManager.openInputStream();
+                    BufferedReader fileReader = new BufferedReader(new FileReader(iFileManager.getFile().getPath()));
+                    while (fileReader.ready()) {
+                        data.add(fileReader.readLine());
+                    }
+                    iFileManager.canReadFile();
+                    counterList.setOpt(option);
+                    counterList.count(data);
+                    data.clear();
+                    System.out.println("\n --------------------------------------------------");
                 }
-                iFileManager.canReadFile();
-                counterList.setOpt(option);
-                counterList.count(data);
-                data.clear();
             }
+
+            //Copy Program
+            if (counter.getClass().getName().equals("CopyCounter")) {
+                counterList.setOpt(option);
+                counterList.setFiles(file);
+                counterList.count(data);
+            }
+
+            //Closing All Files
+            for (IFileManager iFileManager : file)
+                iFileManager.close();
+
+       }catch(URISyntaxException e){
+
+            System.out.println("File not found at program source folder");
+            System.out.println(e.getMessage());
+
+        }catch(IOException e){
+
+            System.out.println(e.getMessage());
+
+        }catch(NullPointerException e){
+
+            if((e.getMessage().contains("filePathSystem")) && (e.getMessage().contains("is null"))){
+                for (IFileManager iFileManager : file) {
+                    if (!iFileManager.isOpen()) {
+                        System.out.println(iFileManager.getFileName() + " not found at program source folder");
+                        System.out.println(e.getMessage());
+                        return;
+                    }
+                }
+            }
+
         }
-        //Copy Program
-        if(counter.getClass().getName().equals("CopyCounter")){
-            counterList.setOpt(option);
-            counterList.setFiles(file);
-            counterList.count(data);
-            return;
-        }
-        //Closing All Files
-        for (IFileManager iFileManager : file)
-            iFileManager.close();
     }
 }

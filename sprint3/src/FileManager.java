@@ -28,7 +28,9 @@ class FileManager implements IFileManager {
     }
 
     public void openFile() throws URISyntaxException {
-        srcFile = new File(filePathSystem.toURI());
+
+            srcFile = new File(filePathSystem.toURI());
+
     }
 
     public void openInputStream() throws FileNotFoundException, URISyntaxException {
@@ -77,6 +79,10 @@ class FileManager implements IFileManager {
             return "No Path";
     }
 
+    public String getFileName(){
+        return this.fileName;
+    }
+
     public void setBufferedReader() throws FileNotFoundException {
         reader = new BufferedReader(new FileReader(getFile()));
     }
@@ -108,12 +114,9 @@ class FileManager implements IFileManager {
     @Override
     public boolean isOpen() {
         if (srcStream != null) {
-            System.out.println("\nSource File");
-            System.out.println("srcFilename = '" + srcFile.getName() + "'");
             return true;
         }
-        System.out.println("\nSource File");
-        System.out.println("Cannot open srcFile '" + srcFile.getName() + "'");
+        System.out.println("\nCannot open srcFile '" + fileName + "'");
         return false;
     }
 
