@@ -2,6 +2,7 @@ package edu.soen341.projectAS3.options;
 
 import java.util.Arrays;
 
+//Option abstract class used to define options for counters
 abstract class Option implements IOption{
 
 

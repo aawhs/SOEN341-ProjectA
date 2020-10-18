@@ -4,14 +4,16 @@ import edu.soen341.projectAS3.fileManager.IFileManager;
 
 import java.util.ArrayList;
 
+//Returns the number of words in the file
 class WordCounter extends Counter {
     @Override
     public void count(ArrayList<String> line){
         char[] characters;
-
+        //For every line in the ArrayList of lines, count number of words
         for (String s : line) {
             characters = s.toCharArray();
             for (int j = 0; j < characters.length; j++) {
+                //Verify if word
                 if (Character.isLetter(characters[j]) && j != characters.length - 1) {
                     isWord = true;
                 } else if (!Character.isLetter(characters[j]) && isWord) {

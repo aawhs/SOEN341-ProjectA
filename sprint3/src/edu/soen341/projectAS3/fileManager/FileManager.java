@@ -6,6 +6,7 @@ import java.net.URL;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
+//Managing file with open, close and input/output stream initializing
 public class FileManager implements IFileManager {
 
     Path srcPath;
@@ -17,24 +18,24 @@ public class FileManager implements IFileManager {
     private FileOutputStream dstStream;
     private BufferedReader reader;
 
-
-
     public FileManager(String args) {
         this.fileName = args;
     }
 
-    //Methods
+    //Initializes the filepath of the file
     public void setFilePath() {
         srcPath = Paths.get(fileName);
         filePathSystem = ClassLoader.getSystemResource(srcPath.toString());
     }
 
+    //Creates File object for the input file
     public void openFile() throws URISyntaxException {
 
             srcFile = new File(filePathSystem.toURI());
 
     }
 
+    //Create input stream for the file
     public void openInputStream() throws FileNotFoundException, URISyntaxException {
         setFilePath();
         openFile();
@@ -43,11 +44,13 @@ public class FileManager implements IFileManager {
         assert isOpen();
     }
 
+    //Create output stream for the file
     public void openOutputStream() throws FileNotFoundException {
         dstFile = new File(fileName);
         dstStream = new FileOutputStream(dstFile);
     }
 
+    //Close file
     public void close() throws IOException {
         if(srcStream != null)
             srcStream.close();
@@ -55,6 +58,7 @@ public class FileManager implements IFileManager {
             dstStream.close();
     }
 
+    //Reset file
     public void reset() throws IOException, URISyntaxException {
         srcStream.close();
         openInputStream();
@@ -72,6 +76,7 @@ public class FileManager implements IFileManager {
         return  this.dstStream;
     }
 
+    //Return the absolute path of the file
     public String getAbsolutePath(){
         if(dstFile != null)
             return dstFile.getAbsolutePath();
@@ -81,6 +86,7 @@ public class FileManager implements IFileManager {
             return "No Path";
     }
 
+    //Returns file name
     public String getFileName(){
         return this.fileName;
     }

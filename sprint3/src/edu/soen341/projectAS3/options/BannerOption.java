@@ -2,6 +2,7 @@ package edu.soen341.projectAS3.options;
 
 import static java.lang.System.exit;
 
+//Returns relevant counter options and banners according to counters used
 class BannerOption extends Option {
     public BannerOption() {
         super(new String[]{"-b"},"-banner");

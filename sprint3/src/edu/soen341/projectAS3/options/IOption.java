@@ -1,5 +1,6 @@
 package edu.soen341.projectAS3.options;
 
+//Options interfacing outlining methods to implement
 public interface IOption {
     default void printUsage() {
         System.out.println("CommandLine = wcOO CommandName { Option } { Argument }\n" +

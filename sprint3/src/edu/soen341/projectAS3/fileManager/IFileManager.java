@@ -3,6 +3,7 @@ package edu.soen341.projectAS3.fileManager;
 import java.io.*;
 import java.net.URISyntaxException;
 
+//Interface outline the required methods for the FileManager child class
 public interface IFileManager {
     String getFileName();
     boolean canReadFile();

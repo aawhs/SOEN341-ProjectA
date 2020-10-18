@@ -2,6 +2,7 @@ package edu.soen341.projectAS3.options;
 
 import static java.lang.System.exit;
 
+//Returns relevant usage according to input arguments
 class HelpOption extends Option {
 
     public HelpOption() {

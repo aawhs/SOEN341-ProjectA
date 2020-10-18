@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
 
+//Counter abstract class implementing ICounter interface
 abstract class Counter implements ICounter {
     static Integer count = 0;
     boolean isWord = false;

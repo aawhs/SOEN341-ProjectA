@@ -16,7 +16,7 @@ public class Administrator {
 
     ArrayList<IFileManager> file = new ArrayList<>();
 
-    //needs comments
+    //Parses user input arguments to guide program into execute relevant counter
     public void parse(String[] args){
 
         //Asserting Arguments
@@ -42,11 +42,12 @@ public class Administrator {
                 file.add(new FileManager(arg));
             }
         }
-
+        //Null option in case none is given
         if(option == null){
             option = optionFactory.getOption(null);
         }
 
+        //If no counter is specified in arguments, assume wc
         if(counter == null){
             counter=counterFactory.createCounter("wc");
             counterList.add(counter);
