@@ -20,7 +20,7 @@ public class wcOO {
     private static Administrator admin;
 
     public static void main(String [] args){
-        args = new String[]{"wc", "-verbose", "test.txt", "testingComposite.txt"};
+        args = new String[]{"copy", "-verbose", "test.txt", "testingComposite.txt"};
         admin = new Administrator();
         admin.parse(args);
         wcOO.init();
@@ -41,7 +41,7 @@ public class wcOO {
         System.out.println("\n================ wcOO Program ================");
         try {
             //Counters Processing
-            if (!counter.getClass().getName().equals("CopyCounter")) {
+            if (!counter.getClass().getSimpleName().equals("CopyCounter")) {
                 for (IFileManager iFileManager : file) {
                     iFileManager.openInputStream();
                     BufferedReader fileReader = new BufferedReader(new FileReader(iFileManager.getFile().getPath()));
@@ -57,7 +57,7 @@ public class wcOO {
             }
 
             //Copy Program
-            if (counter.getClass().getName().equals("CopyCounter")) {
+            if (counter.getClass().getSimpleName().equals("CopyCounter")) {
                 counterList.setOpt(option);
                 counterList.setFiles(file);
                 counterList.count(data);
@@ -87,7 +87,6 @@ public class wcOO {
                     }
                 }
             }
-
         }
     }
 }
