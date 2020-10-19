@@ -20,7 +20,7 @@ public class wcOO {
     private static Administrator admin;
 
     public static void main(String [] args){
-        args = new String[]{"charcount","-v", "test.txt", "testingNew.txt"};
+        args = new String[]{"charcount","-v", "test.txt", "testNew.txt"};
         admin = new Administrator();
         admin.parse(args);
         wcOO.init();
