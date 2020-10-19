@@ -9,7 +9,7 @@ import java.util.ArrayList;
 public class Administrator {
     private static final OptionFactory optionFactory = new OptionFactory();
     private static final CounterFactory counterFactory = new CounterFactory();
-    private static Composite counterList = new Composite();
+    private static CounterList counterList = new CounterList();
 
     private static IOption option;
     private static ICounter counter;
@@ -67,6 +67,6 @@ public class Administrator {
         return file;
     }
 
-    public Composite getCounterList(){return counterList;}
+    public CounterList getCounterList(){return counterList;}
 
 }

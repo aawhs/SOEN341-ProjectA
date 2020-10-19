@@ -6,7 +6,7 @@ import java.util.List;
 import java.io.*;
 
 //Composite pattern creates objects of counters mentioned in arguments and adds to list
-public class Composite extends Counter{
+public class CounterList extends Counter{
 
     List<ICounter> counters= new ArrayList<>();
 

@@ -14,13 +14,13 @@ public class wcOO {
 
     private static ICounter counter;
     private static IOption option;
-    private static Composite counterList;
+    private static CounterList counterList;
     private static ArrayList<IFileManager> file;
     private static ArrayList<String> data;
     private static Administrator admin;
 
     public static void main(String [] args){
-        args = new String[]{"copy", "-verbose", "test.txt", "testingComposite.txt"};
+        //args = new String[]{"charcount","-v", "test.txt", "testingComposite.txt"};
         admin = new Administrator();
         admin.parse(args);
         wcOO.init();
